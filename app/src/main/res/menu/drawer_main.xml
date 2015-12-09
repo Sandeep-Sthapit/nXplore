@@ -1,31 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <group android:checkableBehavior="single">
+    <group android:id="@+id/group_user_feature"
+        android:checkableBehavior="single">
         <item
             android:id="@+id/navigation_item_attachment"
-            android:checked="true"
-            android:icon="@drawable/ic_attachment"
-            android:title="@string/nav_item_attachment" />
+            android:icon="@drawable/ic_action_favorite"
+            android:title="Favourites" />
         <item
             android:id="@+id/navigation_item_images"
-            android:icon="@drawable/ic_image"
-            android:title="@string/nav_item_images" />
+            android:icon="@drawable/ic_action_add_person"
+            android:title="Friends" />
         <item
             android:id="@+id/navigation_item_location"
             android:icon="@drawable/ic_place"
             android:title="@string/nav_item_location" />
     </group>
 
-    <item android:title="@string/nav_sub_menu">
-        <menu>
-            <item
-                android:icon="@drawable/ic_emoticon"
-                android:title="@string/nav_sub_menu_item01" />
-            <item
-                android:icon="@drawable/ic_emoticon"
-                android:title="@string/nav_sub_menu_item02" />
-        </menu>
-    </item>
+
+    <group
+        android:id="@+id/group_app_feature"
+        android:checkableBehavior="single">
+        <item
+            android:icon="@drawable/ic_action_home"
+            android:title="Home" />
+        <item
+            android:icon="@drawable/ic_food"
+            android:title="Food" />
+        <item
+            android:icon="@drawable/ic_clothes"
+            android:title="Dress" />
+        <item
+            android:icon="@drawable/ic_music"
+            android:title="Music" />
+        <item
+            android:icon="@drawable/ic_festival"
+            android:title="Festival" />
+    </group>
+
 
 </menu>

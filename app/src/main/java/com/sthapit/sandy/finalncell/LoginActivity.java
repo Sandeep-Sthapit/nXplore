@@ -1,11 +1,7 @@
 package com.sthapit.sandy.finalncell;
 
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
-import android.os.AsyncTask;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.InputType;
@@ -18,69 +14,98 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.apache.http.NameValuePair;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONException;
-import org.json.JSONObject;
+public class LoginActivity extends AppCompatActivity {
 
-import java.util.ArrayList;
-import java.util.List;
+    UserSessionManager sessionManager;
+    EditText editText_username;
+    EditText editText_password;
+    Button button_login;
+    Button button_signup;
+    Button button_visibile;
 
-public class LoginActivity extends AppCompatActivity{
-
-    private ProgressDialog pDialog;
-    JSONParser jsonParser = new JSONParser();
-
-    private static final String LOGIN_URL = "http://10.100.0.201/login.php";
-    private static final String REGISTER_URL = "http://10.100.0.201/register.php";
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
-    EditText password ,username;
-    String user,pass;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        final Button button_login = (Button)findViewById(R.id.bt_visibility);
-        password = (EditText) findViewById(R.id.et_Password);
-        username = (EditText) findViewById(R.id.et_Username);
 
-        button_login.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        String user = username.getText().toString();
-                        String pass = password.getText().toString();
-                        switch(v.getId()){
-                            case R.id.bt_Login:
-                                new LoginUser().execute();
-                                break;
-                            case R.id.bt_signup:
-                                new CreateUser().execute();
-                                break;
-                            default:
-                                break;
-                        }
+        sessionManager = new UserSessionManager(getApplicationContext());
 
-                    }
-                }
-        );
+        button_visibile = (Button) findViewById(R.id.bt_visibility);
+        button_signup = (Button) findViewById(R.id.bt_signup);
+        button_login = (Button) findViewById(R.id.bt_Login);
+        editText_password = (EditText) findViewById(R.id.et_Password);
+        editText_username = (EditText) findViewById(R.id.et_Username);
 
-        button_login.setOnTouchListener(new View.OnTouchListener() {
+        button_visibile.setOnTouchListener(new View.OnTouchListener() {
+
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     v.setPressed(true);
-                    password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
+                    editText_password.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);
                 }
                 if (event.getAction() == MotionEvent.ACTION_UP) {
                     v.setPressed(false);
-                    password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
+                    editText_password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD | InputType.TYPE_CLASS_TEXT);
                 }
                 return true;
             }
-
         });
+
+        button_login.setOnClickListener(new View.OnClickListener() {
+
+                                            @Override
+                                            public void onClick(View arg0) {
+
+                                                // Get username, password from EditText
+                                                String username = editText_username.getText().toString();
+                                                String password = editText_password.getText().toString();
+                                                if (editText_username.getText().toString().equals("")) {
+                                                    Toast.makeText(LoginActivity.this, "Please enter your user name...", Toast.LENGTH_SHORT).show();
+                                                } else if (editText_password.getText().toString().equals("")) {
+                                                    Toast.makeText(LoginActivity.this, "Please enter your password...", Toast.LENGTH_SHORT).show();
+                                                } else if (!checkLogin(editText_username.getText().toString().trim(), editText_password.getText().toString().trim())) {
+                                                    Toast.makeText(LoginActivity.this, "User name or password failed!", Toast.LENGTH_SHORT).show();
+                                                } else {
+                                                    goToHomeActivity();
+                                                }
+
+                                            }
+
+                                            private void goToHomeActivity() {
+                                                //saving data to Session (SharedPreferences)
+                                                sessionManager.setSavedPassword(editText_password.getText().toString());
+                                                sessionManager.setSavedUserName(editText_username.getText().toString());
+                                                sessionManager.setUserLoggedIn(true);
+
+                                                //go to Home Screen
+                                                Intent intent = new Intent(LoginActivity.this, FoodActivity.class);
+                                                startActivity(intent);
+                                                finish(); //finish LoginActivity
+                                            }
+
+                                            /**
+                                             * Checking input is valid?
+                                             * @param userName
+                                             * @param password
+                                             * @return
+                                             */
+                                            private boolean checkLogin(String userName, String password) {
+                                                String uname = "admin";
+                                                String pass = "admin";
+                                                if (password.equals(uname)) {
+                                                    if (pass.equals(userName)) {
+                                                        return true;
+                                                    }
+                                                }
+
+
+                                                return false;
+                                            }
+
+                                        }
+
+        );
     }
 
     @Override
@@ -104,121 +129,5 @@ public class LoginActivity extends AppCompatActivity{
 
         return super.onOptionsItemSelected(item);
     }
-
-    class LoginUser extends AsyncTask<String, String, String> {
-
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(LoginActivity.this);
-            pDialog.setMessage("Login in...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
-        }
-
-        protected void onPostExecute(String file_url) {
-            // dismiss the dialog once product deleted
-            pDialog.dismiss();
-            if (file_url != null){
-                Toast.makeText(LoginActivity.this, file_url, Toast.LENGTH_LONG).show();
-            }
-
-        }
-
-        @Override
-        protected String doInBackground(String... para) {
-            // TODO Auto-generated method stub
-            int success=0;
-
-            try {
-                JSONObject jSon = new JSONObject();
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("username", user));
-                params.add(new BasicNameValuePair("password", pass));
-                params.add(new BasicNameValuePair("request", "login"));
-
-                jSon = jsonParser.makeHttpRequest(
-                        LOGIN_URL, "POST", params);
-                success = jSon.getInt(TAG_SUCCESS);
-
-                if (success == 1){
-                    SharedPreferences sp = PreferenceManager
-                            .getDefaultSharedPreferences(LoginActivity.this);
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("username", user);
-                    edit.commit();
-
-                    //Intent i = new Intent(LoginActivity.this, items.class);
-                    //startActivity(i);
-                    return jSon.getString(TAG_MESSAGE);
-                }else{
-                    return jSon.getString(TAG_MESSAGE);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-    }
-
-    class CreateUser extends AsyncTask<String, String, String> {
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            pDialog = new ProgressDialog(LoginActivity.this);
-            pDialog.setMessage("Creating User...");
-            pDialog.setIndeterminate(false);
-            pDialog.setCancelable(true);
-            pDialog.show();
-        }
-
-        protected void onPostExecute(String file_url) {
-            // dismiss the dialog once product deleted
-            pDialog.dismiss();
-            if (file_url != null){
-                Toast.makeText(LoginActivity.this, file_url, Toast.LENGTH_LONG).show();
-            }
-
-        }
-
-        @Override
-        protected String doInBackground(String... para) {
-            // TODO Auto-generated method stub
-            int success=0;
-
-            try {
-                JSONObject jSon = new JSONObject();
-                List<NameValuePair> params = new ArrayList<NameValuePair>();
-                params.add(new BasicNameValuePair("username", user));
-                params.add(new BasicNameValuePair("password", pass));
-                params.add(new BasicNameValuePair("request", "register"));
-                //params.add(new(BasicNameValuePair("email","email")));
-                jSon = jsonParser.makeHttpRequest(
-                        REGISTER_URL, "POST", params);
-                success = jSon.getInt(TAG_SUCCESS);
-
-                if (success == 1){
-                    SharedPreferences sp = PreferenceManager
-                            .getDefaultSharedPreferences(LoginActivity.this);
-                    SharedPreferences.Editor edit = sp.edit();
-                    edit.putString("username", user);
-                    edit.commit();
-                    //Intent i = new Intent(LoginActivity.this, items.class);
-                    //startActivity(i);
-                    return jSon.getString(TAG_MESSAGE);
-                }else{
-                    return jSon.getString(TAG_MESSAGE);
-                }
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-            return null;
-        }
-
-    }
-
 }
 

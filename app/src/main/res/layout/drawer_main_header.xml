@@ -31,7 +31,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="12dp"
             android:paddingRight="12dp"
-            android:text="User"
+            android:text="admin"
             android:textColor="#fff"
             android:gravity="center"
             android:layout_gravity="center"
@@ -39,11 +39,4 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/bt_login_user"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Log In or Sign Up"
-        android:background="@color/primary_light"
-        android:onClick="login_button_click"/>
 </LinearLayout>

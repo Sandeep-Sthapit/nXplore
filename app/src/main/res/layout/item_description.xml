@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_scrool_item_description"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_item_description_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="5dp"
+            android:text="sandy"
+            android:textColor="@color/primary_text"
+            android:textSize="30sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Description:"
+            android:textColor="@color/primary_text"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_item_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/yomari_description"
+            android:textColor="@color/secondary_text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Origin:"
+            android:textColor="@color/primary_text"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_item_origin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/yomari_origin"
+            android:textColor="@color/secondary_text"
+            android:textSize="20sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="Ingredients:"
+            android:textColor="@color/primary_text"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_item_ingredient"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:text="@string/yomari_ingredients"
+            android:textColor="@color/secondary_text"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
+</ScrollView>

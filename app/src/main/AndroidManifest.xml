@@ -32,6 +32,14 @@
             android:name=".MainActivity"
             android:label="@string/title_activity_main" >
         </activity>
+        <activity
+            android:name=".CusineActivity"
+            android:label="@string/title_activity_cusine" >
+        </activity>
+        <activity
+            android:name=".UserProfileActivity"
+            android:label="@string/title_activity_user_profile" >
+        </activity>
     </application>
 
 </manifest>

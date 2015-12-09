@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_item_user"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#A1ABE9"
+    android:orientation="vertical"
+    android:padding="6dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="6dp"
+        android:text="Comments"
+        android:textColor="@color/primary_text"
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:id="@+id/layout_user_comment"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:background="@color/primary_light">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:scaleType="fitXY"
+            android:padding="4dp"
+            android:id="@+id/user_image_view"
+            android:src="@drawable/profile"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="4dp"
+            android:text="admin : "
+            android:textSize="25sp"
+            android:textColor="@color/primary_text"
+            android:id="@+id/tv_user_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:layout_marginLeft="4dp"
+            android:textSize="15sp"
+            android:textColor="@color/primary_text"
+            android:text="Great Food"
+            android:id="@+id/tv_user_comment"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+
+        <EditText
+            android:id="@+id/et_user_comment"
+            android:background="#fff"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:visibility="invisible"
+            android:layout_weight=".1"/>
+
+        <Button
+            android:id="@+id/bt_user_comment"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight=".9"
+            android:background="@drawable/ic_done_dark"
+            android:onClick="comment_button_click"
+            android:padding="5dp"
+            android:visibility="invisible" />
+
+    </LinearLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_comment"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:onClick="comment_fab_click"
+        android:src="@drawable/ic_action_edit" />
+
+</LinearLayout>

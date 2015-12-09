@@ -75,7 +75,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 @Override
                 public void onClick(View v) {
 
-                    Intent intent = new Intent(v.getContext(), FoodItemActivity.class);
+                    Intent intent = new Intent(v.getContext(), CusineActivity.class);
                     intent.putExtra("item_title",feed.getTitle());
                     intent.putExtra("item_image",feed.getThumbnail());
                     v.getContext().startActivity(intent);

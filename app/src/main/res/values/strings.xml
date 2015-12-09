@@ -17,5 +17,65 @@
     <string name="nav_sub_menu_item02">Dress</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="title_activity_main">MainActivity</string>
+    <string name="title_activity_cusine">CusineActivity</string>
+
+
+    <string name="dalbhat_description">CusineActivity</string>
+    <string name="dalbhat_origin">CusineActivity</string>
+    <string name="dalbhat_ingredients">CusineActivity</string>
+
+    <string name="dhindo_description">Dhindo or Dhido (dhee-dough
+        It is simply a thick porridge or mush, made by cooking flour with salt and water.</string>
+    <string name="dhindo_origin">Most rural and middle mountain-area people of Nepal especially in dry areas where rice or wheat corps are difficult to grow</string>
+    <string name="dhindo_ingredients">Flour
+        Stone-ground cornmeal (ghatta maa pidheko makai ko pitho)
+        Millet (kodo ko pitho)
+        Buckwheat (phaapar ko pitho)
+        Water
+        Salt (not commonly)
+
+        This hearty and filling dish is a nutrient powerhouse and is often eaten with a dab of homemade butter or clarified butter (nauni, gheu), curried vegetables (jhol tarkaari),or with various pickles, buttermilk or yogurt.</string>
+
+    <string name="khichuri_description">CusineActivity</string>
+    <string name="khichuri_origin">CusineActivity</string>
+    <string name="khichuri_ingredients">CusineActivity</string>
+
+    <string name="kwati_description">CusineActivity</string>
+    <string name="kwati_origin">CusineActivity</string>
+    <string name="kwati_ingredients">CusineActivity</string>
+
+    <string name="phapar_description">Phaapar ko Roti (फापरको रोटी)
+        It is a light-gray colored bread prepared from buckwheat flour.</string>
+    <string name="phapar_origin">Specially by people from hilly region</string>
+    <string name="phapar_ingredients">Buckwheat
+        Chili-salt-timmur (Nepali szechwan pepper)
+        It is prepared with a very simple technique. The flour is made into a smooth batter, spiced, and griddle cooked until light golden brown.</string>
+
+    <string name="sandhekogundruk_description">Dried green leaves and Soybean pickle (Gundruk-Bhatmas sandheko achar)</string>
+    <string name="sandhekogundruk_origin">Nepal</string>
+    <string name="sandhekogundruk_ingredients">Gundruk - Dried Green Leaves
+        Bhatmas - Soybean
+        Tel - Oil
+        Noon - Salt
+        Hariyo Khursani - Green chili
+        Kaagati ko ras- Lemon juice
+        Lasun - Garlic
+        Golveda - Tomato
+    </string>
+
+    <string name="sellroti_description">CusineActivity</string>
+    <string name="sellroti_origin">CusineActivity</string>
+    <string name="sellroti_ingredients">CusineActivity</string>
+
+    <string name="yomari_description">It is a steamed bread with filling made from new harvest rice flour dough.
+        In Newari yoh (योह) - to love or to like mari (मरी) - bread dish</string>
+    <string name="yomari_origin">Newar Community</string>
+    <string name="yomari_ingredients">Yomari Bread : It has a soft delicate texture with a bit of chewiness without being sticky, and a perfect combination of sweet filling with a great flavor.
+        Filling : It varies according to family preferences which includes Milk Fudge (khuwaa - खुवा) - spicy ground meat and bean paste, and even sesame seeds or coconut.
+        Chaaku (चाकु) -  unrefined sugar made from the juice drained out of sugarcane stalks.The juice is then purified and boiled to produce a thick, dark-brown syrup which ultimately turns into firm chunks.
+        Roasted and Ground Sesame Seeds.</string>
+
+
+    <string name="title_activity_user_profile">UserProfileActivity</string>
 
 </resources>
