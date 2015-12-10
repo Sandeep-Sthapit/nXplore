@@ -8,4 +8,4 @@ Due to language differences, tourists usually find it difficult to communicate w
 
 Solarized dark             |  Solarized Ocean
 :-------------------------:|:-------------------------:
-![](https://github.com/codeezer/nXplore/blob/master/graphics/frame-070.jpg)  |  ![](https://github.com/codeezer/nXplore/blob/master/graphics/frame-070.jpg)
+<img src="https://github.com/codeezer/nXplore/blob/master/graphics/frame-070.jpg" width="250">  |  <img src="https://github.com/codeezer/nXplore/blob/master/graphics/frame-070.jpg" width="250">
